@@ -74,7 +74,7 @@ class Cache:
 
         Args:
             data (Union[str, bytes, int, float]): The data to be stored
-        Return:
+        Returns:
             str: Key
         """
         key: str = uuid.uuid4().hex
@@ -107,3 +107,9 @@ class Cache:
         if fn is None:
             return data
         return fn(str)
+
+    def get_str(self, key: str) -> str:
+        return self.get(key, str)
+
+    def get_int(self, key: str) -> int:
+        return self.get(key, int)
